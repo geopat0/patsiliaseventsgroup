@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Patsilias Events Group - DJ, Ήχος & Φώς για Γάμους και Δεξιώσεις</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3d5a6c;
+            --accent: #d4a574;
+            --highlight: #8b9ba8;
+            --dark: #1a1a1a;
+            --light: #f5f5f5;
+        }
+
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+        }
+
+        .navbar-brand, .btn-primary-custom, .btn-secondary-custom, .submit-btn {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #d4a574;
+            letter-spacing: -1px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            position: relative;
+            color: #333 !important;
+            margin-left: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4a574;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #3d5a6c 0%, #2c3e50 100%);
+            color: white;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 165, 116, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 155, 168, 0.15) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .btn-primary-custom {
+            background: #d4a574;
+            color: white !important;
+            border: none;
+            padding: 14px 35px;
+            font-weight: 700;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 165, 116, 0.5);
+            color: white !important;
+            background: #c49360;
+        }
+
+        .btn-secondary-custom {
+            background: transparent;
+            color: white !important;
+            border: 2px solid white;
+            padding: 14px 35px;
+            font-weight: 700;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary-custom:hover {
+            background: white;
+            color: var(--primary) !important;
+            transform: translateY(-3px);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #d4a574, #8b9ba8);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f5f5f5 0%, #efefef 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+
+        .service-card:hover::before {
+            top: -25%;
+            right: -25%;
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: #6c757d;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #3d5a6c 0%, #2c3e50 100%);
+            color: white;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #d4a574, #8b9ba8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 120px 0;
+            background: white;
+        }
+
+        .portfolio-item {
+            background: linear-gradient(135deg, #3d5a6c 0%, #2c3e50 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            height: 350px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .portfolio-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Video Items */
+        .video-item {
+            transition: all 0.3s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-item iframe {
+            display: block;
+            width: 100%;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #3d5a6c 0%, #2c3e50 100%);
+            color: white;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-info-item i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #d4a574;
+        }
+
+        .contact-info-item a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-item a:hover {
+            color: #d4a574;
+        }
+
+        .form-control {
+            border: none;
+            border-radius: 8px;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.2);
+            border-color: #d4a574;
+            background: white;
+            color: #333;
+        }
+
+        .form-label {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .submit-btn {
+            background: #d4a574;
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-weight: 700;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
+            background: #c49360;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 80px 0;
+                min-height: auto;
+            }
+
+            .services, .portfolio, .about, .contact {
+                padding: 60px 0;
+            }
+
+            .stat-box {
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">PATSILIAS EVENTS GROUP</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Αρχική</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Υπηρεσίες</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Χαρτοφυλάκιο</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Σχετικά</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Επικοινωνία</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto hero-content text-center">
+                    <h1>Κάνουμε την Εκδήλωση των Ονείρων σας Πραγματικότητα</h1>
+                    <p>Υπηρεσίες DJ - Ενοικίασης Επαγγελματικού Ήχου και Φωτισμού</p>
+                    <div class="row mt-5">
+                        <div class="col-lg-6 d-flex justify-content-center mb-3 mb-lg-0">
+                            <a href="#contact" class="btn-primary-custom" style="width: 100%; max-width: 300px; text-align: center; padding: 16px 35px;">Εκδήλωση Ενδιαφέροντος</a>
+                        </div>
+                        <div class="col-lg-6 d-flex justify-content-center">
+                            <a href="#services" class="btn-secondary-custom" style="width: 100%; max-width: 300px; text-align: center; padding: 16px 35px;">Μάθετε Περισσότερα</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Οι Υπηρεσίες Μας</h2>
+            <div class="row mt-5">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">🎵</div>
+                        <h3>DJ Services</h3>
+                        <p>Επαγγελματικές υπηρεσίες DJ. Ο DJ μας έχει περισσότερο από 25 χρόνια εμπειρίας σε μουσικές εκδηλώσεις καθώς και γνώση πολλών ειδών μουσικής. Επικοινωνήστε μαζί μας ώστε να προσαρμόσουμε τη μουσική στα δικό σας γούστο και τύπο Event.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">🔊</div>
+                        <h3>Επαγγελματικός Ήχος</h3>
+                        <p>Παρέχουμε επαγγελματικής ποιότητας Ηχεία, ανάλογα με το χώρο και το πλήθος των καλεσμένων σας. Επικοινωνήστε μαζί μας για λεπτομέρειες.</p>
+                        <div style="margin-top: 1.5rem;">
+                            <a href="sound_equipment.html" style="color: #d4a574; font-weight: 600; text-decoration: none; display: inline-block;">Δείτε τον Εξοπλισμό → </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="service-card">
+                        <div class="service-icon">💡</div>
+                        <h3>Φωτισμός & Ατμόσφαιρα</h3>
+                        <p>Παρέχουμε επαγγελματικό φωτισμό που αποτελείται από μπάρες LED και φωτορυθμικά με εφέ για μικρά και μεσαία Event. Επικοινωνήστε μαζί μας για να διαλέξουμε αυτό που ταιριάζει στο Event σας.</p>
+                        <div style="margin-top: 1.5rem;">
+                            <a href="lighting_equipment.html" style="color: #d4a574; font-weight: 600; text-decoration: none; display: inline-block;">Δείτε τον Εξοπλισμό → </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2>Σχετικά με Εμάς</h2>
+                    <p>Η Patsilias Events Group είναι μια δυναμική εταιρεία που ειδικεύεται σε DJ, ήχο και φωτισμό για γάμους και δεξιώσεις.</p>
+                    <p>Με 25 χρόνια εμπειρίας, ο ιδιοκτήτης μας έχει δημιουργήσει εκατοντάδες αξέχαστα γεγονότα στην Κοζάνη και όχι μόνο.</p>
+                    <p>Η υποσχέσεις μας: επαγγελματισμός, ποιότητα και κάθε λεπτομέρεια με προσοχή.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="stat-box">
+                                <div class="stat-number">25+</div>
+                                <div class="stat-label">Χρόνια Εμπειρίας</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="stat-box">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Ευχαριστημένοι Πελάτες</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="stat-box">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Ικανοποίηση</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="stat-box">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-label">Υποστήριξη</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Προηγούμενες Δουλειές</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 3rem; font-size: 1.1rem;">Δείτε κάποια από τα πιο όμορφα γεγονότα που έχουμε κάνει</p>
+            
+            <div class="row mt-5">
+                <!-- Video 1 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="video-item">
+                        <iframe src="https://player.vimeo.com/video/1172893159?h=&title=0&byline=0&portrait=0" width="100%" height="315" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="border-radius: 15px;"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Video 2 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="video-item">
+                        <iframe src="https://player.vimeo.com/video/1172895826?h=&title=0&byline=0&portrait=0" width="100%" height="315" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="border-radius: 15px;"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Video 3 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="video-item">
+                        <iframe src="https://player.vimeo.com/video/1172895508?h=&title=0&byline=0&portrait=0" width="100%" height="315" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="border-radius: 15px;"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Video 4 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="video-item">
+                        <iframe src="https://player.vimeo.com/video/1172895285?h=&title=0&byline=0&portrait=0" width="100%" height="315" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="border-radius: 15px;"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Video 5 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="video-item">
+                        <iframe src="https://player.vimeo.com/video/1172895163?h=&title=0&byline=0&portrait=0" width="100%" height="315" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="border-radius: 15px;"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Video 6 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="video-item">
+                        <iframe src="https://player.vimeo.com/video/1172894648?h=&title=0&byline=0&portrait=0" width="100%" height="315" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="border-radius: 15px;"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Video 7 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="video-item">
+                        <iframe src="https://player.vimeo.com/video/1172895394?h=&title=0&byline=0&portrait=0" width="100%" height="315" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="border-radius: 15px;"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Video 8 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="video-item">
+                        <iframe src="https://player.vimeo.com/video/1172893356?h=&title=0&byline=0&portrait=0" width="100%" height="315" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="border-radius: 15px;"></iframe>
+                    </div>
+                </div>
+                
+                <!-- Video 9 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="video-item">
+                        <iframe src="https://player.vimeo.com/video/1172894004?h=&title=0&byline=0&portrait=0" width="100%" height="315" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="border-radius: 15px;"></iframe>
+                    </div>
+                </div>
+
+                <!-- Video 10 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="video-item">
+                        <iframe src="https://player.vimeo.com/video/1172895078?h=&title=0&byline=0&portrait=0" width="100%" height="315" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="border-radius: 15px;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2>Ας Μιλήσουμε</h2>
+                    <p class="mb-4">Έτοιμοι να κάνετε το γεγονός σας αξέχαστο; Επικοινωνήστε μαζί μας σήμερα!</p>
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:6981885862">698 188 5862</a>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:geopcbl@gmail.com">geopcbl@gmail.com</a>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Κοζάνη</span>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Όνομα</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Μήνυμα</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Στείλε Μήνυμα</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Patsilias Events Group. Όλα τα δικαιώματα διατηρούνται. | DJ • Ήχος • Φώς</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', functio
