@@ -1,0 +1,20 @@
+const header=document.querySelector('[data-header]');
+const nav=document.querySelector('[data-nav]');
+const navToggle=document.querySelector('[data-nav-toggle]');
+const setHeader=()=>header?.classList.toggle('scrolled',window.scrollY>16);
+setHeader();window.addEventListener('scroll',setHeader,{passive:true});
+navToggle?.addEventListener('click',()=>{const open=nav.classList.toggle('open');navToggle.setAttribute('aria-expanded',String(open));navToggle.setAttribute('aria-label',open?'Κλείσιμο μενού':'Άνοιγμα μενού');});
+nav?.addEventListener('click',event=>{if(event.target.closest('a')){nav.classList.remove('open');navToggle?.setAttribute('aria-expanded','false');}});
+const revealObserver='IntersectionObserver' in window?new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target);}});},{threshold:.12}):null;
+document.querySelectorAll('.reveal').forEach(element=>revealObserver?revealObserver.observe(element):element.classList.add('visible'));
+document.querySelector('[data-video-grid]')?.addEventListener('click',event=>{const button=event.target.closest('.video-poster');if(!button)return;const card=button.closest('[data-video-id]');const iframe=document.createElement('iframe');iframe.src=`https://player.vimeo.com/video/${card.dataset.videoId}?autoplay=1&title=0&byline=0&portrait=0&dnt=1`;iframe.title=button.getAttribute('aria-label').replace('Αναπαραγωγή βίντεο: ','');iframe.allow='autoplay; fullscreen; picture-in-picture';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';card.replaceChildren(iframe);});
+const showVideos=document.querySelector('[data-show-videos]');
+showVideos?.addEventListener('click',()=>{const extras=[...document.querySelectorAll('.extra-video')];const willShow=extras.some(card=>card.hidden);extras.forEach(card=>{card.hidden=!willShow;});showVideos.textContent=willShow?'Εμφάνιση λιγότερων':'Δείτε 7 ακόμη στιγμές';showVideos.setAttribute('aria-expanded',String(willShow));});
+const equipmentKey='patsilias-equipment';
+const selectedEquipment=()=>{try{return JSON.parse(window.localStorage?.getItem(equipmentKey)||'[]');}catch{return [];}};
+const saveEquipment=items=>{try{window.localStorage?.setItem(equipmentKey,JSON.stringify(items));}catch{/* URL transfer remains available when storage is blocked. */}};
+const syncEquipmentCta=()=>{const selected=selectedEquipment();document.querySelectorAll('[data-equipment-cta]').forEach(link=>{link.href=selected.length?`index.html?equipment=${encodeURIComponent(selected.join('|'))}#contact`:'index.html#contact';});};
+document.querySelectorAll('[data-equipment]').forEach(button=>{const sync=()=>{const selected=selectedEquipment().includes(button.dataset.equipment);button.classList.toggle('selected',selected);button.setAttribute('aria-pressed',String(selected));button.textContent=selected?'Επιλέχθηκε':'Προσθήκη στο αίτημα';};sync();button.addEventListener('click',()=>{const item=button.dataset.equipment;const current=selectedEquipment();saveEquipment(current.includes(item)?current.filter(value=>value!==item):[...current,item]);sync();syncEquipmentCta();});});
+syncEquipmentCta();
+const form=document.querySelector('[data-contact-form]');
+if(form){const queryEquipment=new URLSearchParams(window.location.search).get('equipment');form.querySelector('[data-equipment-field]').value=queryEquipment?queryEquipment.split('|').join(', '):selectedEquipment().join(', ');form.addEventListener('submit',event=>{event.preventDefault();const data=new FormData(form);const subject=`Αίτημα για ${data.get('event')} — ${data.get('name')}`;const body=[`Όνομα: ${data.get('name')}`,`Τηλέφωνο: ${data.get('phone')}`,`Ημερομηνία: ${data.get('date')||'Δεν έχει οριστεί'}`,`Τύπος εκδήλωσης: ${data.get('event')}`,`Χώρος / Περιοχή: ${data.get('venue')||'Δεν έχει οριστεί'}`,`Επιλεγμένος εξοπλισμός: ${data.get('equipment')||'Δεν έχει επιλεγεί'}`,'',data.get('message')].join('\n');window.location.href=`mailto:geopcbl@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;});}
