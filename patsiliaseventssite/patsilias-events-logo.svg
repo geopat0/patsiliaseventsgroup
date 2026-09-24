@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" role="img" aria-labelledby="title">
+<title>Patsilias Events</title>
+<style>
+.main{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;font-weight:300;letter-spacing:18px}
+.sub{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;font-weight:300;letter-spacing:14px}
+.foot{font-family:'Montserrat','Helvetica Neue',Arial,sans-serif;font-weight:300;letter-spacing:8px}
+</style>
+<g fill="#181818" stroke="#181818">
+<text class="main" x="800" y="285" text-anchor="middle" font-size="112" stroke="none">PATSILIAS</text>
+<line x1="390" y1="365" x2="540" y2="365" stroke-width="1.5"/>
+<text class="sub" x="800" y="395" text-anchor="middle" font-size="62" stroke="none">EVENTS</text>
+<line x1="1060" y1="365" x2="1210" y2="365" stroke-width="1.5"/>
+<text class="foot" x="800" y="490" text-anchor="middle" font-size="30" stroke="none">MUSIC  |  EVENTS</text>
+</g></svg>

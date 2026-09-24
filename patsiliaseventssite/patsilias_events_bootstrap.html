@@ -49,10 +49,23 @@
         }
 
         .navbar-brand {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: #d4a574;
-            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            padding: 0;
+        }
+
+        .navbar-logo {
+            display: block;
+            width: 220px;
+            height: auto;
+            max-height: 64px;
+        }
+
+        @media (max-width: 576px) {
+            .navbar-logo {
+                width: 175px;
+                max-height: 54px;
+            }
         }
 
         .nav-link {
@@ -503,7 +516,9 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#home">PATSILIAS EVENTS GROUP</a>
+            <a class="navbar-brand" href="#home" aria-label="Patsilias Events - Αρχική">
+                <img src="patsilias-events-logo.svg" class="navbar-logo" alt="Patsilias Events">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
