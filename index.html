@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=publications">
   <title>DJ Γάμου Κοζάνη | Patsilias Events</title>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ProfessionalService","name":"Patsilias Events","url":"https://geopat0.github.io/patsiliaseventsgroup/","telephone":"+306981885862","email":"geopcbl@gmail.com","founder":{"@type":"Person","name":"George Patsilias"},"address":{"@type":"PostalAddress","addressLocality":"Κοζάνη","addressCountry":"GR"},"areaServed":{"@type":"Country","name":"Ελλάδα"},"description":"DJ γάμου, επαγγελματικός ήχος και φωτισμός για γάμους και εκδηλώσεις."}
@@ -72,6 +72,33 @@
         <article class="video-card extra-video" data-video-id="1172895078" hidden><button class="video-poster tone-night" type="button" aria-label="Αναπαραγωγή βίντεο: Το τελευταίο τραγούδι"><span class="video-index">10</span><span class="play"><span aria-hidden="true">▶</span></span><span class="video-title">Το τελευταίο τραγούδι</span></button></article>
       </div>
       <div class="center reveal"><button class="button button-ghost" type="button" data-show-videos aria-expanded="false">Δείτε 7 ακόμη στιγμές</button></div>
+      <section class="press-coverage" id="publications" aria-labelledby="publications-title">
+        <h3 id="publications-title">Δημοσιεύσεις στο Love4Weddings</h3>
+        <p class="press-intro">Τρεις γάμοι στους οποίους το Love4Weddings αναφέρει τον George Patsilias ως DJ.</p>
+        <ul class="press-grid" role="list">
+          <li>
+            <a class="press-link" href="https://www.love4weddings.gr/wedding-video-full-romance-kastoria/">
+              <span class="press-location">Καστοριά</span>
+              <span class="press-couple">Δήμητρα &amp; Ανέστης</span>
+              <span class="press-action">Δείτε τη δημοσίευση <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="press-link" href="https://www.love4weddings.gr/romantic-summer-wedding-lovely-details/">
+              <span class="press-location">Κοζάνη</span>
+              <span class="press-couple">Κασσιανή &amp; Ιωάννης</span>
+              <span class="press-action">Δείτε τη δημοσίευση <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="press-link" href="https://www.love4weddings.gr/romantic-summer-wedding-kozani-baby-breath/">
+              <span class="press-location">Κοζάνη</span>
+              <span class="press-couple">Ειρήνη &amp; Ζήσης</span>
+              <span class="press-action">Δείτε τη δημοσίευση <span aria-hidden="true">↗</span></span>
+            </a>
+          </li>
+        </ul>
+      </section>
     </div></section>
     <section class="section about" id="about"><div class="container about-grid">
       <div class="section-heading reveal"><p class="eyebrow">PATSILIAS EVENTS</p><h2>Εμπειρία που ακούγεται. Φροντίδα που φαίνεται.</h2></div>
@@ -87,11 +114,32 @@
     </div></section>
     <section class="section contact" id="contact"><div class="container contact-grid">
       <div class="contact-copy reveal"><p class="eyebrow">ΑΣ ΜΙΛΗΣΟΥΜΕ</p><h2>Πείτε μας για τη δική σας ημέρα.</h2><p>Στείλτε τις πρώτες λεπτομέρειες και θα επικοινωνήσουμε μαζί σας για να σχεδιάσουμε την κατάλληλη πρόταση.</p><div class="contact-links"><a href="tel:+306981885862">+30 698 188 5862</a><a href="mailto:geopcbl@gmail.com">geopcbl@gmail.com</a><span>Κοζάνη · Όλη η Ελλάδα</span></div></div>
-      <form class="contact-form reveal" data-contact-form><div class="field-row"><label>Όνομα<input type="text" name="name" autocomplete="name" required></label><label>Τηλέφωνο<input type="tel" name="phone" autocomplete="tel" required></label></div><div class="field-row"><label>Ημερομηνία<input type="date" name="date"></label><label>Τύπος εκδήλωσης<select name="event"><option value="Γάμος">Γάμος</option><option value="Βάπτιση">Βάπτιση</option><option value="Ιδιωτική εκδήλωση">Ιδιωτική εκδήλωση</option><option value="Εταιρική εκδήλωση">Εταιρική εκδήλωση</option></select></label></div><label>Χώρος / Περιοχή<input type="text" name="venue" autocomplete="street-address"></label><label>Λίγα λόγια για την εκδήλωση<textarea name="message" rows="4" required></textarea></label><input type="hidden" name="equipment" data-equipment-field><button class="button button-primary" type="submit">Δημιουργία αιτήματος</button><p class="form-note">Θα ανοίξει η εφαρμογή email σας με συμπληρωμένο το αίτημα. Δεν αποθηκεύουμε στοιχεία στη σελίδα.</p></form>
+      <form class="contact-form reveal" data-contact-form action="mailto:geopcbl@gmail.com" method="post" enctype="text/plain">
+        <div class="field-row">
+          <label>Όνομα<input type="text" name="name" autocomplete="name" maxlength="120" required></label>
+          <label>Τηλέφωνο<input type="tel" name="phone" autocomplete="tel" maxlength="40" required></label>
+        </div>
+        <label>Email (προαιρετικό)<input type="email" name="email" autocomplete="email" maxlength="254"></label>
+        <div class="field-row">
+          <label>Ημερομηνία<input type="date" name="date"></label>
+          <label>Τύπος εκδήλωσης
+            <select name="event">
+              <option value="Γάμος">Γάμος</option>
+              <option value="Βάπτιση">Βάπτιση</option>
+              <option value="Ιδιωτική εκδήλωση">Ιδιωτική εκδήλωση</option>
+              <option value="Εταιρική εκδήλωση">Εταιρική εκδήλωση</option>
+            </select>
+          </label>
+        </div>
+        <label>Χώρος / Περιοχή<input type="text" name="venue" maxlength="180"></label>
+        <label>Λίγα λόγια για την εκδήλωση<textarea name="message" rows="4" maxlength="3000" required></textarea></label>
+        <input type="hidden" name="equipment" data-equipment-field>
+        <button class="button button-primary" type="submit">Δημιουργία αιτήματος</button>
+        <p class="form-note">Θα ανοίξει η εφαρμογή email σας με συμπληρωμένο το αίτημα.</p>
+      </form>
     </div></section>
   </main>
   <footer class="site-footer"><div class="container footer-grid"><img src="patsilias-events-logo.svg" width="1600" height="700" alt="Patsilias Events"><p>© 2026 Patsilias Events. Όλα τα δικαιώματα διατηρούνται.</p><a href="#home">Επιστροφή επάνω ↑</a></div></footer>
   <a class="mobile-call" href="tel:+306981885862" aria-label="Καλέστε την Patsilias Events">Καλέστε μας</a>
-  <script>const equipmentFromUrl=new URLSearchParams(location.search).get('equipment');if(equipmentFromUrl)document.querySelector('[data-equipment-field]').value=equipmentFromUrl.split('|').join(', ');</script>
-  <script src="script.js?v=4" defer></script>
+  <script src="script.js?v=5" defer></script>
 </body></html>
