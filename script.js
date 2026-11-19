@@ -16,5 +16,28 @@ const saveEquipment=items=>{try{window.localStorage?.setItem(equipmentKey,JSON.s
 const syncEquipmentCta=()=>{const selected=selectedEquipment();document.querySelectorAll('[data-equipment-cta]').forEach(link=>{link.href=selected.length?`index.html?equipment=${encodeURIComponent(selected.join('|'))}#contact`:'index.html#contact';});};
 document.querySelectorAll('[data-equipment]').forEach(button=>{const sync=()=>{const selected=selectedEquipment().includes(button.dataset.equipment);button.classList.toggle('selected',selected);button.setAttribute('aria-pressed',String(selected));button.textContent=selected?'Επιλέχθηκε':'Προσθήκη στο αίτημα';};sync();button.addEventListener('click',()=>{const item=button.dataset.equipment;const current=selectedEquipment();saveEquipment(current.includes(item)?current.filter(value=>value!==item):[...current,item]);sync();syncEquipmentCta();});});
 syncEquipmentCta();
-const form=document.querySelector('[data-contact-form]');
-if(form){const queryEquipment=new URLSearchParams(window.location.search).get('equipment');form.querySelector('[data-equipment-field]').value=queryEquipment?queryEquipment.split('|').join(', '):selectedEquipment().join(', ');form.addEventListener('submit',event=>{event.preventDefault();const data=new FormData(form);const subject=`Αίτημα για ${data.get('event')} — ${data.get('name')}`;const body=[`Όνομα: ${data.get('name')}`,`Τηλέφωνο: ${data.get('phone')}`,`Ημερομηνία: ${data.get('date')||'Δεν έχει οριστεί'}`,`Τύπος εκδήλωσης: ${data.get('event')}`,`Χώρος / Περιοχή: ${data.get('venue')||'Δεν έχει οριστεί'}`,`Επιλεγμένος εξοπλισμός: ${data.get('equipment')||'Δεν έχει επιλεγεί'}`,'',data.get('message')].join('\n');window.location.href=`mailto:geopcbl@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;});}
+const contactForm = document.querySelector('[data-contact-form]');
+if (contactForm) {
+  const equipment = new URLSearchParams(location.search).get('equipment');
+  const equipmentField = contactForm.querySelector('[data-equipment-field]');
+  equipmentField.value = equipment ? equipment.split('|').join(', ') : selectedEquipment().join(', ');
+}
+
+document.querySelector('[data-contact-form]:not([data-host-contact])')?.addEventListener('submit', event => {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const data = new FormData(form);
+  const subject = `Αίτημα για ${data.get('event')} — ${data.get('name')}`;
+  const body = [
+    `Όνομα: ${data.get('name')}`,
+    `Τηλέφωνο: ${data.get('phone')}`,
+    `Email: ${data.get('email') || 'Δεν έχει δηλωθεί'}`,
+    `Ημερομηνία: ${data.get('date') || 'Δεν έχει οριστεί'}`,
+    `Τύπος εκδήλωσης: ${data.get('event')}`,
+    `Χώρος / Περιοχή: ${data.get('venue') || 'Δεν έχει οριστεί'}`,
+    `Επιλεγμένος εξοπλισμός: ${data.get('equipment') || 'Δεν έχει επιλεγεί'}`,
+    '',
+    data.get('message')
+  ].join('\n');
+  window.location.href = `${form.getAttribute('action')}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
